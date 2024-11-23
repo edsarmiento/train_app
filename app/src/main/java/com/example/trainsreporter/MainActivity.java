@@ -1,10 +1,10 @@
 package com.example.trainsreporter;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -29,26 +29,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
-            }
-        });
+        binding.appBarMain.fab.setOnClickListener(view ->
+                Toast.makeText(MainActivity.this, "Replace with your own action", Toast.LENGTH_LONG).show());
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Initialize the AppBarConfiguration
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        // Set the listener for navigation view items
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.action_exit) {
+                // Show a toast message (optional)
+                Toast.makeText(MainActivity.this, "Exiting Application", Toast.LENGTH_SHORT).show();
+
+                // Exit the application
+                finishAffinity(); // Close all activities and exit the app
+                return true; // Indicate that the event was handled
+            }
+
+            // Handle other menu items here, if needed
+            return false; // For other items, return false to indicate no action taken
+        });
     }
 
     @Override
