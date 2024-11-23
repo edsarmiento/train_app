@@ -1,0 +1,65 @@
+# Android Studio specific
+/.idea/
+/.idea/**/*
+!/.idea/inspectionProfiles/
+!/.idea/vcs.xml
+!/.idea/workspace.xml
+!/.idea/misc.xml
+!/.idea/modules.xml
+*.iml
+
+# Built application files
+*.apk
+*.aab
+
+# Gradle files
+.gradle/
+/build/
+
+# Local configuration file (sdk location, keystore passwords, etc.)
+local.properties
+
+# Log files
+*.log
+
+# Dependency directories
+/.gradle/
+/.gradle-cache/
+/.idea/libraries/
+
+# Proguard files
+proguard/
+proguard/*.txt
+
+# Keystore files (important: secure this file if included in project)
+*.keystore
+*.jks
+
+# Generated files by Android tools
+gen/
+bin/
+obj/
+
+# Crashlytics and Fabric
+fabric.properties
+crashlytics.properties
+
+# NDK
+obj/
+.externalNativeBuild/
+
+# Jetpack Compose
+.idea/kotlin/ 
+
+# Other files that might be generated during builds
+captures/
+output.json
+*.ap_
+
+# macOS specific
+.DS_Store
+*.swp
+*.swo
+
+# Windows specific
+Thumbs.db
